@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Płatność</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.7);
+            position: relative;
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .payment-methods {
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .payment-methods h2 {
+            margin-bottom: 15px;
+        }
+        .payment-methods .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55%;
+            max-width: 180px;
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 6px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        .button:hover {
+            background-color: #e65c00;
+        }
+        .payment-methods .button img.payment-logo {
+            width: 22px;
+            height: auto;
+            margin-right: 6px;
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: auto;
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 6px;
+        }
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Podsumowanie płatności</h1>
+        <p>Łączna kwota do zapłaty: <span id="total-price">0</span> zł</p>
+        <div class="payment-methods">
+            <h2>Wybierz metodę płatności</h2>
+            <button class="button">
+                <img src="blik.png" alt="BLIK" class="payment-logo"> BLIK
+            </button>
+            <button class="button">
+                <img src="karta.png" alt="Karta kredytowa" class="payment-logo"> Karta kredytowa
+            </button>
+            <button class="button">
+                <img src="przelew.png" alt="Przelew bankowy" class="payment-logo"> Przelew bankowy
+            </button>
+        </div>
+        <button class="button back-button" onclick="goBack()">Wróć do koszyka</button>
+    </div>
+   
+    <script>
+        document.getElementById("total-price").innerText = localStorage.getItem("totalPrice") || 0;
+        function goBack() {
+            window.location.href = "koszyk.html";
+        }
+    </script>
+</body>
+</html>
+ 
