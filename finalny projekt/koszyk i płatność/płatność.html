@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Płatność - Usługi Sprzątające</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6600;
+            --primary-hover: #e65c00;
+            --secondary-color: #333;
+            --accent-color: #ff6600;
+            --dark-bg: #333;
+            --light-bg: #555;
+            --text-light: #ffffff;
+            --text-muted: #cccccc;
+            --success-color: #ff6600;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .price-display {
+            background: rgba(255, 102, 0, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 102, 0, 0.2);
+        }
+
+        .price-display p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        #total-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(255, 102, 0, 0.3);
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button img.payment-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            object-fit: contain;
+        }
+
+        .payment-details {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .payment-details input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(51, 51, 51, 0.5);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: var(--text-light);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .payment-details input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+        }
+
+        .payment-details .button {
+            margin-top: 0.5rem;
+        }
+
+        .blik-code-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .blik-code {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .blik-code input {
+            width: 50px;
+            height: 60px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .blik-code input:focus {
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.15);
+            outline: none;
+        }
+
+        .blik-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .blik-instruction {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 0.875rem 1.5rem;
+            background-color: var(--light-bg);
+            color: var(--text-light);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-button:hover {
+            background-color: rgba(85, 85, 85, 0.8);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .back-button svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 1rem;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 0 1rem;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+
+        .card-icons img {
+            height: 24px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .card-icons img:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+            }
+
+            .blik-code input {
+                width: 40px;
+                height: 50px;
+                font-size: 1.75rem;
+            }
+
+            .back-button {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.75rem 1.25rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Loading animation for payment processing */
+        .processing {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .processing::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Podsumowanie płatności</h1>
+        
+        <div class="price-display">
+            <p>Łączna kwota do zapłaty:</p>
+            <div id="total-price">0 zł</div>
+        </div>
+
+        <div class="payment-methods">
+            <h2>Wybierz metodę płatności</h2>
+            <button class="button" onclick="showPaymentDetails('blik')">
+                <img src="blik.png" alt="BLIK" class="payment-logo"> BLIK
+            </button>
+            <button class="button" onclick="showPaymentDetails('card')">
+                <img src="krta.png" alt="Karta płatnicza" class="payment-logo"> Karta płatnicza
+            </button>
+            <button class="button" onclick="showPaymentDetails('transfer')">
+                <img src="dus.png" alt="Przelew bankowy" class="payment-logo"> Przelew bankowy
+            </button>
+        </div>
+
+        <!-- Sekcja BLIK -->
+        <div class="payment-details" id="blik-details">
+            <div class="blik-code-container">
+                <img src="blik.png" alt="BLIK" class="blik-logo">
+                <p class="blik-instruction">Wprowadź 6-cyfrowy kod BLIK z aplikacji bankowej</p>
+                <div class="blik-code">
+                    <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 1)">
+                    <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 2)">
+                    <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 3)">
+                    <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 4)">
+                    <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 5)">
+                    <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 6)">
+                </div>
+                <button class="button" id="blik-button" onclick="processPayment()">
+                    Zatwierdź płatność BLIK
+                </button>
+            </div>
+        </div>
+
+        <!-- Sekcja karty płatniczej -->
+        <div class="payment-details" id="card-details">
+            <div class="input-group">
+                <label for="card-number">Numer karty</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)">
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <div class="input-group" style="flex: 1;">
+                    <label for="card-expiry">Data ważności</label>
+                    <input type="text" id="card-expiry" placeholder="MM/RR" maxlength="5" oninput="formatExpiryDate(this)">
+                </div>
+                
+                <div class="input-group" style="flex: 1;">
+                    <label for="card-cvv">Kod CVV</label>
+                    <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+                </div>
+            </div>
+            
+            <div class="card-icons">
+                <img src="visa.png" alt="Visa">
+                <img src="mastercard.png" alt="Mastercard">
+                <img src="maestro.png" alt="Maestro">
+            </div>
+            
+            <button class="button" id="card-button" onclick="processPayment()">
+                Zatwierdź płatność kartą
+            </button>
+        </div>
+
+        <!-- Sekcja przelewu bankowego -->
+        <div class="payment-details" id="transfer-details">
+            <div class="input-group">
+                <p>Dane do przelewu:</p>
+                <p><strong>Odbiorca:</strong> Usługi Sprzątające JarnychCzebac Sp. z o.o.</p>
+                <p><strong>Nr konta:</strong> 12 3456 7890 1234 5678 9012 3456</p>
+                <p><strong>Kwota:</strong> <span id="transfer-amount">0 zł</span></p>
+                <p><strong>Tytuł przelewu:</strong> US-<span id="order-id">123456</span></p>
+            </div>
+            <button class="button" onclick="processPayment()">
+                Potwierdź przelew
+            </button>
+        </div>
+    </div>
+
+    <button class="back-button" onclick="goBack()">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        <span>Wróć</span>
+    </button>
+
+    <div class="footer">
+        <p>&copy; 2025 Usługi Sprzątające. Wszystkie prawa zastrzeżone.</p>
+    </div>
+
+    <script>
+        // Format price display
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalPrice = localStorage.getItem("totalPrice") || "0";
+            const formattedPrice = parseFloat(totalPrice).toFixed(2).replace('.', ',');
+            document.getElementById("total-price").textContent = formattedPrice + ' zł';
+            document.getElementById("transfer-amount").textContent = formattedPrice + ' zł';
+            
+            // Generate random order ID
+            document.getElementById("order-id").textContent = Math.floor(100000 + Math.random() * 900000);
+        });
+
+        function goBack() {
+            window.location.href = "koszyk.html";
+        }
+
+        function showPaymentDetails(method) {
+            // Hide all payment details first
+            document.getElementById("blik-details").style.display = "none";
+            document.getElementById("card-details").style.display = "none";
+            document.getElementById("transfer-details").style.display = "none";
+            
+            // Show selected method
+            if (method === 'blik') {
+                document.getElementById("blik-details").style.display = "flex";
+                // Focus first BLIK input
+                setTimeout(() => {
+                    document.querySelector(".blik-code input").focus();
+                }, 100);
+            } else if (method === 'card') {
+                document.getElementById("card-details").style.display = "flex";
+            } else if (method === 'transfer') {
+                document.getElementById("transfer-details").style.display = "flex";
+            }
+            
+            // Scroll to details
+            setTimeout(() => {
+                document.querySelector(".payment-details[style*='display: flex']")?.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }, 100);
+        }
+        
+        function moveToNext(input, currentIndex) {
+            // Validate input (only numbers allowed)
+            input.value = input.value.replace(/\D/g, '');
+            
+            // Move to next input when digit is entered
+            if (input.value.length === 1) {
+                const nextInput = input.nextElementSibling;
+                if (nextInput) {
+                    nextInput.focus();
+                } else {
+                    // Last input - focus the button
+                    document.getElementById("blik-button").focus();
+                }
+            }
+            
+            // Auto-focus first input if deleted
+            if (input.value.length === 0 && currentIndex > 1) {
+                const prevInput = input.previousElementSibling;
+                if (prevInput) {
+                    prevInput.focus();
+                }
+            }
+        }
+        
+        function formatCardNumber(input) {
+            // Remove all non-digit characters
+            let value = input.value.replace(/\D/g, '');
+            
+            // Add space after every 4 digits
+            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            
+            // Update input value
+            input.value = value.trim();
+        }
+        
+        function formatExpiryDate(input) {
+            let value = input.value.replace(/\D/g, '');
+            
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            
+            input.value = value;
+        }
+        
+        function processPayment() {
+            const button = event.target;
+            button.classList.add('processing');
+            const originalText = button.innerHTML;
+            button.innerHTML = ''; // Clear text
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                button.classList.remove('processing');
+                button.innerHTML = originalText;
+                alert('Płatność zakończona pomyślnie! Dziękujemy za zakup.');
+                window.location.href = "potwierdzenie.html";
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
