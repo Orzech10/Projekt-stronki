@@ -206,25 +206,225 @@ nav ul li a:hover {
 
 
 /* === Stopka === */
-footer {
-    background-color: #1a1a1a;
-    color: #ff6600;
-    padding: 30px 10%;
-    text-align: center;
+.modern-footer {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    padding: 60px 0 0;
+    font-family: 'Poppins', sans-serif;
     border-top: 3px solid #ff6600;
-    font-size: 1.1em;
 }
 
-footer a {
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+}
+
+.footer-logo img {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.footer-description {
+    color: #b3b3b3;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.footer-heading {
     color: #ff6600;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #ff6600;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #b3b3b3;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    display: inline-block;
 }
 
-footer a:hover {
-    color: white;
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
 }
 
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #ffffff;
+    background-color: #333333;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #ff6600;
+    transform: translateY(-3px);
+}
+
+.social-icon {
+    background-color: #333333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    overflow: hidden; /* zapewnia, że obrazki nie wyjdą poza okrąg */
+}
+
+.social-icon:hover {
+    background-color: #ff6600;
+    transform: translateY(-3px);
+}
+
+.social-icon img {
+    width: 60%; /* dostosuj rozmiar logo */
+    height: auto;
+    filter: brightness(0) invert(1); /* zamienia logo na białe */
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover img {
+    filter: brightness(1) invert(0); /* przywraca oryginalne kolory przy hover */
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #b3b3b3;
+    font-size: 0.95rem;
+}
+
+.contact-item i {
+    color: #ff6600;
+    margin-top: 3px;
+}
+
+.footer-bottom {
+    background-color: #0a0a0a;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-legal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-legal p {
+    color: #b3b3b3;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: #ff6600;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-legal {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-heading::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .footer-links a:hover {
+        transform: none;
+    }
+}
 /* === Oferty (nowa sekcja) === */
 .offers {
     background: #1a1a1a; 
@@ -501,47 +701,6 @@ footer a:hover {
       font-size: 28px;
     }
   }
-
-
-
-
-  /* footer */
-  footer {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 3rem 0 1rem;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.footer-column h3 {
-    margin-bottom: 1rem;
-    color: #ff6600;
-}
-
-.footer-column ul {
-    list-style: none;
-}
-
-.footer-column ul li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-column ul li a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-column ul li a:hover {
-    color: white;
-}
-
 .copyright {
     text-align: center;
     padding-top: 1rem;
