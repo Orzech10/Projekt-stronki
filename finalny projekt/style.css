@@ -629,11 +629,11 @@ nav ul li a:hover {
   }
   
   /* STYLE DOSTĘPNOŚCI */
-  body.increased-text {
+  body.increase-text {
     font-size: 125%;
   }
   
-  body.decreased-text {
+  body.decrease-text {
     font-size: 85%;
   }
   
