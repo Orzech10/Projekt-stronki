@@ -182,7 +182,6 @@
                 <li><a href="about.html">O nas</a></li>
                 <li><a href="offers.html">Oferty</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
-                <li><a href="#">Blog</a></li>
             </ul>
         </div>
 
@@ -221,40 +220,126 @@
     </div>
 </footer>
 
-<!-- nowe rzeczy-->
-<div class="video-floating-wrapper">
-    <video id="myVideo" src="video.mp4" autoplay loop muted></video>
-    <div class="video-controls">
-      <button onclick="restartVideo()">⟳</button>
-      <button onclick="toggleMute()">🔇</button>
-      <button onclick="closeVideo()">✖</button>
-      <button onclick="togglePlay()">▶</button>
+<!-- 
+///////////////
+MAREK PIS
+//////////////-->
+<div class="video-player-container">
+    <div class="video-border-ring">
+        <div class="video-wrapper">
+            <video class="video-element" autoplay>
+                <source src="foto/Untitled.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje elementu video.
+            </video>
+        </div>
+        
+        <!-- Przyciski na obramówce -->
+        <button class="control-btn play-btn" title="Odtwarzaj">▶</button>
+        <button class="control-btn pause-btn" title="Wstrzymaj">❚❚</button>
+        <button class="control-btn restart-btn" title="Odtwórz ponownie">↻</button>
+        <button class="control-btn mute-btn" title="Wycisz">🔊</button>
+        <button class="control-btn unmute-btn" title="Włącz dźwięk">🔇</button>
+        <button class="control-btn close-btn" title="Zamknij">×</button>
+        
+        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
     </div>
 </div>
 
-    <script>
-        const video = document.getElementById('myVideo');
-      
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('.video-element');
+        const playBtn = document.querySelector('.play-btn');
+        const pauseBtn = document.querySelector('.pause-btn');
+        const restartBtn = document.querySelector('.restart-btn');
+        const muteBtn = document.querySelector('.mute-btn');
+        const unmuteBtn = document.querySelector('.unmute-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const volumeSlider = document.querySelector('.volume-slider');
+        const playerContainer = document.querySelector('.video-player-container');
+
+        // Inicjalizacja wideo
+        video.volume = 0.5;
+        video.loop = false;
+        video.muted = false;
+        
+        // Wymuś odtwarzanie po załadowaniu
+        function forcePlay() {
+            video.play().catch(error => {
+                // W przypadku błędu autoodtwarzania, wyświetl przycisk play
+                playBtn.style.display = 'flex';
+                console.log("Autoplay blocked:", error);
+            });
+        }
+        
+        // Rozpocznij odtwarzanie natychmiast
+        forcePlay();
+        
+        // Play/Pause
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+            } else {
+                video.pause();
+                playBtn.style.display = 'flex';
+                pauseBtn.style.display = 'none';
+            }
+        }
+        
+        // Restart
         function restartVideo() {
-          video.currentTime = 0;
-          video.play();
+            video.currentTime = 0;
+            if (video.paused) {
+                video.play();
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+            }
         }
-      
+        
+        // Mute/Unmute
         function toggleMute() {
-          video.muted = !video.muted;
+            video.muted = !video.muted;
+            muteBtn.style.display = video.muted ? 'none' : 'flex';
+            unmuteBtn.style.display = video.muted ? 'flex' : 'none';
         }
-      
-        function togglePlay() {
-          if (video.paused) {
-            video.play();
-          } else {
+        
+        // Volume control
+        function setVolume() {
+            video.volume = this.value;
+            video.muted = this.value == 0;
+            muteBtn.style.display = video.muted ? 'none' : 'flex';
+            unmuteBtn.style.display = video.muted ? 'flex' : 'none';
+        }
+        
+        // Close
+        function closePlayer() {
             video.pause();
-          }
+            playerContainer.style.display = 'none';
         }
-      
-        function closeVideo() {
-          document.querySelector('.video-floating-wrapper').style.display = 'none';
-        }
-      </script>
+        
+        // Event listeners
+        playBtn.addEventListener('click', togglePlayPause);
+        pauseBtn.addEventListener('click', togglePlayPause);
+        restartBtn.addEventListener('click', restartVideo);
+        muteBtn.addEventListener('click', toggleMute);
+        unmuteBtn.addEventListener('click', toggleMute);
+        closeBtn.addEventListener('click', closePlayer);
+        volumeSlider.addEventListener('input', setVolume);
+        
+        // Po zakończeniu wideo
+        video.addEventListener('ended', function() {
+            playBtn.style.display = 'flex';
+            pauseBtn.style.display = 'none';
+        });
+        
+        // Aktualizacja suwaka głośności
+        video.addEventListener('volumechange', function() {
+            if (!video.muted) {
+                volumeSlider.value = video.volume;
+            }
+        });
+    });
+</script>
 </body>
 </html>
