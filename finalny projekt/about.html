@@ -34,20 +34,50 @@
     </section>
 
     <!-- Sekcja główna O nas -->
-    <section class="about-main">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
+<!-- Sekcja główna O nas -->
+<section class="about-main">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <button id="myButton" class="title-button">
                     <h2>CleanExpert - profesjonalne usługi sprzątające</h2>
-                    <p>Jesteśmy firmą z wieloletnim doświadczeniem w branży sprzątającej. Od 2010 roku świadczymy usługi na terenie całego kraju, zdobywając zaufanie setek zadowolonych klientów.</p>
-                    <p>Nasz zespół składa się z wykwalifikowanych specjalistów, którzy podchodzą do każdego zlecenia z pasją i zaangażowaniem. Korzystamy wyłącznie z profesjonalnego sprzętu i ekologicznych środków czystości.</p>
-                </div>
-                <div class="about-image">
-                    <img src="foto/about-team.jpg" alt="Nasz zespół CleanExpert">
-                </div>
+                </button>
+                <p id="textDisplay" style="display: none;"></p>
+                <p>Jesteśmy firmą z wieloletnim doświadczeniem w branży sprzątającej. Od 2010 roku świadczymy usługi na terenie całego kraju, zdobywając zaufanie setek zadowolonych klientów.</p>
+                <p>Nasz zespół składa się z wykwalifikowanych specjalistów, którzy podchodzą do każdego zlecenia z pasją i zaangażowaniem. Korzystamy wyłącznie z profesjonalnego sprzętu i ekologicznych środków czystości.</p>
+            </div>
+            <div class="about-image">
+                <img src="foto/about-team.jpg" alt="Nasz zespół CleanExpert">
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    document.getElementById("myButton").addEventListener("click", function() {
+        const button = this;
+        const originalText = button.innerHTML;
+        const textDisplay = document.getElementById("textDisplay");
+        
+        // Pierwsza zmiana tekstu
+        button.innerHTML = '<h2>CleanExpert - profesjonalne usługi sprzątające</h2>';
+        
+        setTimeout(function() {
+            // Druga zmiana tekstu
+            button.innerHTML = '<h2>Jebać Czarnych ~ Pozdro Grzegorz Floryda</h2>';
+            
+            setTimeout(function() {
+                // Trzecia zmiana tekstu
+                button.innerHTML = '<h2>CleanExpert - profesjonalne usługi sprzątające</h2>';
+                
+                setTimeout(function() {
+                    // Powrót do oryginalnego tekstu
+                    button.innerHTML = originalText;
+                }, 1000); // 1 sekunda
+            }, 1500); // 1.5 sekundy
+        }, 1000); // 1 sekunda
+    });
+</script>
 
     <!-- Dlaczego my -->
     <section class="why-us">

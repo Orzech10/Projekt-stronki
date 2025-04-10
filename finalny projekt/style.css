@@ -939,7 +939,7 @@ nav ul li a:hover {
 }
 
 .contact-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('foto/bannery/banner-kontakt.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('foto/biale-kapturniki.png') no-repeat center center/cover;
     text-align: center;
     padding: 150px 10%;
     margin-bottom: 50px;
@@ -1116,6 +1116,28 @@ nav ul li a:hover {
 .btn-submit:hover {
     background-color: #e55e00;
     transform: translateY(-2px);
+}
+
+/* Style dla przycisku "JARNYCH CZEBAĆ" */
+.title-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.title-button h2 {
+    color: #ff6600;
+    transition: all 0.3s;
+}
+
+.title-button:hover h2 {
+    color: #e55e00;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
 }
 
 /* Responsywność */
