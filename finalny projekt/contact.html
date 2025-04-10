@@ -4,132 +4,190 @@
     <meta charset="UTF-8">
     <title>Kontakt - CleanShop</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <img src="foto/logo.png" alt="CleanExpert Logo">
+        <div class="logo">
+            <a href="index.html">
+                <img src='foto/STRONA-GLOWNA/obraz.png' alt="Strona główna" />
+            </a>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Strona Główna</a></li>
                 <li><a href="about.html">O nas</a></li>
                 <li><a href="offers.html">Oferty</a></li> 
-                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="contact.html" class="active">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h1>Kontakt</h1>
-        <p>Email: kontakt@cleanshop.pl</p>
-        <p>Telefon: 123 456 789</p>
+    <main class="contact-page">
+        <section class="contact-banner">
+            <h1>Skontaktuj się z nami</h1>
+            <p>Masz pytania? Chętnie na nie odpowiemy!</p>
+        </section>
+
+        <div class="contact-container">
+            <section class="contact-info-section">
+                <div class="contact-methods">
+                    <h2><i class="fas fa-phone-alt"></i> Telefon</h2>
+                    <p>+48 123 456 789</p>
+                    
+                    <h2><i class="fas fa-envelope"></i> E-mail</h2>
+                    <p>kontakt@cleanshop.pl</p>
+                </div>
+
+                <div class="company-details">
+                    <h2><i class="fas fa-building"></i> Dane firmowe</h2>
+                    <div class="address">
+                        <h3>Siedziba główna:</h3>
+                        <p>ul. Wody Gnojowej 2137<br>00-001 Warszawa</p>
+                    </div>
+                    <div class="address">
+                        <h3>Oddział:</h3>
+                        <p>ul. Krakowska 390<br>32-080 Zabierzów</p>
+                    </div>
+                    
+                    <div class="legal-info">
+                        <p><strong>NIP:</strong> 5130292937</p>
+                        <p><strong>KRS:</strong> 0001096332</p>
+                        <p><strong>REGON:</strong> 528171514</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-form-section">
+                <h2><i class="fas fa-paper-plane"></i> Formularz kontaktowy</h2>
+                <form id="contactForm">
+                    <div class="form-group full-width">
+                        <input type="text" id="name" name="name" placeholder="Imię i Nazwisko" required>
+                    </div>
+                    
+                    <div class="form-group half-width">
+                        <input type="tel" id="phone" name="phone" placeholder="Numer telefonu">
+                    </div>
+                    
+                    <div class="form-group half-width">
+                        <input type="email" id="email" name="email" placeholder="Adres E-mail" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <textarea id="message" name="message" placeholder="Twoja wiadomość..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych przez CleanShop z siedzibą w Warszawie przy ul. Wody Gnojowej 2137, w celu i zakresie niezbędnym do obsługi zapytania. Zapoznałem się z treścią informacji o sposobie przetwarzania moich danych osobowych dostępnych w Polityce Prywatności.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Wyślij</button>
+                </form>
+            </section>
+        </div>
     </main>
 
-      <!-- stopka -->
-
-  <footer class="modern-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <div class="footer-logo">
-                <a href="index.html">
-                    <img src='foto/bannery/logo5.gif' alt="Strona główna" />
-                </a>
-            </div>
-            <p class="footer-description">Profesjonalne usługi sprzątające od 2010 roku. Zapewniamy kompleksową obsługę i najwyższą jakość usług.</p>
-            <div class="footer-social">
-                <a href="#" class="social-icon" aria-label="Facebook">
-                    <img src="foto/footer/fb-logo.png" alt="Facebook">
-                </a>
-                <a href="#" class="social-icon" aria-label="Instagram">
-                    <img src="foto/footer/ig-logo.png" alt="Instagram">
-                </a>
-                <a href="#" class="social-icon" aria-label="Linkin">
-                    <img src="foto/footer/in-logo.png" alt="Linkin">
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-section">
-            <h3 class="footer-heading">Usługi</h3>
-            <ul class="footer-links">
-                <li><a href="#">Sprzątanie mieszkań</a></li>
-                <li><a href="#">Sprzątanie domów</a></li>
-                <li><a href="#">Sprzątanie biur</a></li>
-                <li><a href="#">Mycie okien</a></li>
-                <li><a href="#">Pranie dywanów</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3 class="footer-heading">Firma</h3>
-            <ul class="footer-links">
-                <li><a href="index.html">Strona Główna</a></li>
-                <li><a href="about.html">O nas</a></li>
-                <li><a href="offers.html">Oferty</a></li>
-                <li><a href="contact.html">Kontakt</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3 class="footer-heading">Kontakt</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>ul. Wody Gnojowej 2137, Warszawa</span>
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src='foto/bannery/logo5.gif' alt="Strona główna" />
+                    </a>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+48 123 456 789</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>kontakt@jarnychczebac.pl</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Pn-Pt: 8:00-20:00</span>
+                <p class="footer-description">Profesjonalne usługi sprzątające od 2010 roku. Zapewniamy kompleksową obsługę i najwyższą jakość usług.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <img src="foto/footer/fb-logo.png" alt="Facebook">
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <img src="foto/footer/ig-logo.png" alt="Instagram">
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Linkin">
+                        <img src="foto/footer/in-logo.png" alt="Linkin">
+                    </a>
                 </div>
             </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">Usługi</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Sprzątanie mieszkań</a></li>
+                    <li><a href="#">Sprzątanie domów</a></li>
+                    <li><a href="#">Sprzątanie biur</a></li>
+                    <li><a href="#">Mycie okien</a></li>
+                    <li><a href="#">Pranie dywanów</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">Firma</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="about.html">O nas</a></li>
+                    <li><a href="offers.html">Oferty</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">Kontakt</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ul. Wody Gnojowej 2137, Warszawa</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+48 123 456 789</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>kontakt@cleanshop.pl</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Pn-Pt: 8:00-20:00</span>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <p>&copy; 2025 CleanShop. Wszelkie prawa zastrzeżone.</p>
+                <div class="legal-links">
+                    <a href="#">Polityka prywatności</a>
+                    <a href="#">Warunki korzystania</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Panel dostępności -->
+    <div class="accessibility-panel hidden">
+        <h2>Pomoc przeglądania</h2>
+        <div class="accessibility-options">
+            <label><input type="checkbox" class="accessibility-option" data-action="increase-text"> Powiększ tekst</label>
+            <label><input type="checkbox" class="accessibility-option" data-action="decrease-text"> Pomniejsz tekst</label>
+            <label><input type="checkbox" class="accessibility-option" data-action="grayscale"> Skala szarości</label>
+            <label><input type="checkbox" class="accessibility-option" data-action="high-contrast"> Wysoki kontrast</label>
+            <label><input type="checkbox" class="accessibility-option" data-action="negative"> Negatyw</label>
+            <label><input type="checkbox" class="accessibility-option" data-action="underline-links"> Podkreślone linki</label>
+            <label><input type="checkbox" class="accessibility-option" data-action="readable-font"> Czytelna czcionka</label>
+            <button id="reset-accessibility">Reset</button>
+        </div>
+        <div class="one-click-label">One Click Accessibility</div>
     </div>
-
-    <div class="footer-bottom">
-        <div class="footer-legal">
-            <p>&copy; 2025 JarnychCzebać. Wszelkie prawa zastrzeżone.</p>
-            <div class="legal-links">
-                <a href="#">Polityka prywatności</a>
-                <a href="#">Warunki korzystania</a>
-                <a href="#">Cookies</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
- <!-- Panel dostępności -->
-<!-- Panel dostępności -->
-<div class="accessibility-panel hidden">
-    <h2>Pomoc przeglądania</h2>
-    <div class="accessibility-options">
-      <label><input type="checkbox" class="accessibility-option" data-action="increase-text"> Powiększ tekst</label>
-      <label><input type="checkbox" class="accessibility-option" data-action="decrease-text"> Pomniejsz tekst</label>
-      <label><input type="checkbox" class="accessibility-option" data-action="grayscale"> Skala szarości</label>
-      <label><input type="checkbox" class="accessibility-option" data-action="high-contrast"> Wysoki kontrast</label>
-      <label><input type="checkbox" class="accessibility-option" data-action="negative"> NIGGATYW</label>
-      <label><input type="checkbox" class="accessibility-option" data-action="underline-links"> Podkreślone linki</label>
-      <label><input type="checkbox" class="accessibility-option" data-action="readable-font"> Czytelna czcionka</label>
-      <button id="reset-accessibility">Reset</button>
-    </div>
-    <div class="one-click-label">One Click Accessibility</div>
-  </div>
-  
-  <!-- Przycisk otwierający panel -->
-  <button id="toggle-accessibility" class="accessibility-toggle" aria-label="Otwórz panel dostępności">♿</button>
-  
-<!-- udogodnienie dla osob nie pełno sprytnych -->
-<script src="script.js"></script> 
-
+    
+    <!-- Przycisk otwierający panel -->
+    <button id="toggle-accessibility" class="accessibility-toggle" aria-label="Otwórz panel dostępności">♿</button>
+    
+    <script src="script.js"></script>
 </body>
 </html>
-
-
