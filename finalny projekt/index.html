@@ -221,9 +221,40 @@
     </div>
 </footer>
 
+<!-- nowe rzeczy-->
+<div class="video-floating-wrapper">
+    <video id="myVideo" src="video.mp4" autoplay loop muted></video>
+    <div class="video-controls">
+      <button onclick="restartVideo()">⟳</button>
+      <button onclick="toggleMute()">🔇</button>
+      <button onclick="closeVideo()">✖</button>
+      <button onclick="togglePlay()">▶</button>
+    </div>
+</div>
 
-
-
-
+    <script>
+        const video = document.getElementById('myVideo');
+      
+        function restartVideo() {
+          video.currentTime = 0;
+          video.play();
+        }
+      
+        function toggleMute() {
+          video.muted = !video.muted;
+        }
+      
+        function togglePlay() {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        }
+      
+        function closeVideo() {
+          document.querySelector('.video-floating-wrapper').style.display = 'none';
+        }
+      </script>
 </body>
 </html>
