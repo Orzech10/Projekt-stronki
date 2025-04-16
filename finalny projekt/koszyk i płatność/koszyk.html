@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferty - CleanShop</title>
+    <title>Koszyk - CleanShop</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/offers.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Nagłówek (spójny z poprzednią podstroną) -->
-    <header>
+    <!-- Nagłówek -->
+    <header class="main-header">
         <div class="logo">
             <a href="index.html">
                 <img src='foto/STRONA-GLOWNA/obraz.png' alt="Strona główna" />
@@ -26,144 +25,146 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Profesjonalne Usługi Sprzątające</h1>
-        <p>Zostaw porządki w naszych rękach - skup się na tym, co ważne. Gwarantujemy najwyższą jakość usług i 100% satysfakcji.</p>
-        <div class="hero-buttons">
-            <a href="#services" class="btn btn-primary">
-                <i class="fas fa-list"></i> Nasze usługi
-            </a>
-            <a href="tel:+48123456789" class="btn btn-secondary">
-                <i class="fas fa-phone"></i> Zadzwoń teraz
-            </a>
-        </div>
-    </section>
-
-    <main class="main-container">
-        <div class="section-title">
-            <h2>Zamów usługę sprzątania</h2>
-            <p>Wybierz z listy potrzebne usługi, a my zajmiemy się resztą. Oferujemy konkurencyjne ceny i elastyczne terminy.</p>
-        </div>
-
-        <div class="services-wrapper">
-            <div class="cart-container">
-                <div class="cart-header">
-                    <h2><i class="fas fa-shopping-cart"></i> Twój koszyk</h2>
-                </div>
-                <div class="cart-items" id="cart">
+    <main class="cart-main-container">
+        <h1>Twój koszyk</h1>
+        
+        <div class="cart-wrapper">
+            <div class="cart-items-container">
+                <div class="cart-items" id="cart-items">
+                    <!-- Elementy koszyka będą dodawane dynamicznie -->
                     <div class="empty-cart">
-                        <i class="fas fa-cart-arrow-down"></i>
+                        <i class="fas fa-shopping-cart"></i>
                         <p>Twój koszyk jest pusty</p>
                     </div>
                 </div>
-                <div class="cart-summary" id="summary">
+            </div>
+            
+            <div class="cart-summary-container">
+                <h2>Podsumowanie</h2>
+                <div class="summary-details">
                     <div class="summary-row">
-                        <span>Usługi:</span>
-                        <span id="services-count">0</span>
+                        <span>Produkty:</span>
+                        <span id="products-count">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Wartość:</span>
+                        <span id="subtotal">0 zł</span>
                     </div>
                     <div class="summary-row total">
                         <span>Do zapłaty:</span>
                         <span id="total">0 zł</span>
                     </div>
                 </div>
-                <div class="cart-actions" id="cart-actions">
-                    <button class="btn btn-danger" onclick="clearCart()">
-                        <i class="fas fa-trash-alt"></i> Wyczyść koszyk
-                    </button>
-                    <a href="płatność.html" class="btn btn-primary">
-                        <i class="fas fa-credit-card"></i> Przejdź do płatności
-                    </a>
-                </div>
-            </div>
-
-            <div class="services-container" id="services">
-                <div class="services-header">
-                    <h2><i class="fas fa-list-ul"></i> Dostępne usługi</h2>
-                </div>
-                <div id="services-list"></div>
+                <button class="btn btn-primary" id="checkout-btn">
+                    <i class="fas fa-credit-card"></i> Przejdź do płatności
+                </button>
             </div>
         </div>
     </main>
 
-    <!-- Stopka (spójna z poprzednią podstroną) -->
+    <!-- Stopka -->
     <footer class="modern-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src='foto/footer/logo2.png' alt="Strona główna" />
-                    </a>
-                </div>
-                <p class="footer-description">Profesjonalne usługi sprzątające od 2010 roku. Zapewniamy kompleksową obsługę i najwyższą jakość usług.</p>
-                <div class="footer-social">
-                    <a href="#" class="social-icon" aria-label="Facebook">
-                        <img src="foto/footer/fb-logo.png" alt="Facebook">
-                    </a>
-                    <a href="#" class="social-icon" aria-label="Instagram">
-                        <img src="foto/footer/ig-logo.png" alt="Instagram">
-                    </a>
-                    <a href="#" class="social-icon" aria-label="Linkin">
-                        <img src="foto/footer/in-logo.png" alt="Linkin">
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h3 class="footer-heading">Usługi</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Sprzątanie mieszkań</a></li>
-                    <li><a href="#">Sprzątanie domów</a></li>
-                    <li><a href="#">Sprzątanie biur</a></li>
-                    <li><a href="#">Mycie okien</a></li>
-                    <li><a href="#">Pranie dywanów</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3 class="footer-heading">Firma</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Strona Główna</a></li>
-                    <li><a href="about.html">O nas</a></li>
-                    <li><a href="offers.html">Oferty</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3 class="footer-heading">Kontakt</h3>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>ul. Wody Gnojowej 2137, Warszawa</span>
+        <footer class="modern-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img src='foto/footer/logo2.png' alt="Strona główna" />
+                        </a>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+48 123 456 789</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>kontakt@jarnychczebac.pl</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Pn-Pt: 8:00-20:00</span>
+                    <p class="footer-description">Profesjonalne usługi sprzątające od 2010 roku. Zapewniamy kompleksową obsługę i najwyższą jakość usług.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <img src="foto/footer/fb-logo.png" alt="Facebook">
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <img src="foto/footer/ig-logo.png" alt="Instagram">
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Linkin">
+                            <img src="foto/footer/in-logo.png" alt="Linkin">
+                        </a>
                     </div>
                 </div>
+        
+                <div class="footer-section">
+                    <h3 class="footer-heading">Usługi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sprzątanie mieszkań</a></li>
+                        <li><a href="#">Sprzątanie domów</a></li>
+                        <li><a href="#">Sprzątanie biur</a></li>
+                        <li><a href="#">Mycie okien</a></li>
+                        <li><a href="#">Pranie dywanów</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-section">
+                    <h3 class="footer-heading">Firma</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Strona Główna</a></li>
+                        <li><a href="about.html">O nas</a></li>
+                        <li><a href="offers.html">Oferty</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-section">
+                    <h3 class="footer-heading">Kontakt</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>ul. Wody Gnojowej 2137, Warszawa</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+48 123 456 789</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>kontakt@jarnychczebac.pl</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Pn-Pt: 8:00-20:00</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2025 JarnychCzebać. Wszelkie prawa zastrzeżone.</p>
+                    <div class="legal-links">
+                        <a href="#">Polityka prywatności</a>
+                        <a href="#">Warunki korzystania</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    
+     <!-- Panel dostępności -->
+    <!-- Panel dostępności -->
+    <div class="accessibility-panel hidden">
+        <h2>Pomoc przeglądania</h2>
+        <div class="accessibility-options">
+          <label><input type="checkbox" class="accessibility-option" data-action="increase-text"> Powiększ tekst</label>
+          <label><input type="checkbox" class="accessibility-option" data-action="decrease-text"> Pomniejsz tekst</label>
+          <label><input type="checkbox" class="accessibility-option" data-action="grayscale"> Skala szarości</label>
+          <label><input type="checkbox" class="accessibility-option" data-action="high-contrast"> Wysoki kontrast</label>
+          <label><input type="checkbox" class="accessibility-option" data-action="negative"> NIGGATYW</label>
+          <label><input type="checkbox" class="accessibility-option" data-action="underline-links"> Podkreślone linki</label>
+          <label><input type="checkbox" class="accessibility-option" data-action="readable-font"> Czytelna czcionka</label>
+          <button id="reset-accessibility">Reset</button>
         </div>
-
-        <div class="footer-bottom">
-            <div class="footer-legal">
-                <p>&copy; 2025 JarnychCzebać. Wszelkie prawa zastrzeżone.</p>
-                <div class="legal-links">
-                    <a href="#">Polityka prywatności</a>
-                    <a href="#">Warunki korzystania</a>
-                    <a href="#">Cookies</a>
-                </div>
-            </div>
-        </div>
+        <div class="one-click-label">One Click Accessibility</div>
+      </div>
+      
+      <!-- Przycisk otwierający panel -->
+      <button id="toggle-accessibility" class="accessibility-toggle" aria-label="Otwórz panel dostępności">♿</button>
+      
     </footer>
 
-    <script src="js/offers.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
