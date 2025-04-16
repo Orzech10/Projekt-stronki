@@ -60,3 +60,27 @@
     // Inicjalne ustawienie pozycji
     window.dispatchEvent(new Event('scroll'));
   });
+
+
+  //gwiazdki
+
+  javascript
+Copy
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicjalizacja ocen
+    const ratings = document.querySelectorAll('.rating');
+    
+    ratings.forEach(rating => {
+        const value = parseFloat(rating.getAttribute('data-rating'));
+        const stars = rating.querySelector('.stars');
+        const valueDisplay = rating.querySelector('.rating-value');
+        
+        // Zaokrąglenie do najbliższej 0.5
+        const roundedValue = Math.round(value * 2) / 2;
+        rating.setAttribute('data-rating', roundedValue.toString());
+        valueDisplay.textContent = `${roundedValue}/5`;
+        
+        // Opcjonalnie: dodanie tooltipa z liczbą ocen
+        rating.title = `Ocena ${roundedValue} na podstawie ${Math.floor(Math.random() * 50) + 10} opinii`;
+    });
+});
