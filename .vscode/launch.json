@@ -8,8 +8,8 @@
             {
                 "type": "chrome",
                 "request": "launch",
-                "name": "Launch Chrome against localhost",
-                "url": "http://localhost:8080",
+                "name": "Otwórz aktualny plik HTML w Chrome",
+                "file": "${file}",  // Automatycznie bierze aktualnie otwarty plik!
                 "webRoot": "${workspaceFolder}"
             }
         ]
