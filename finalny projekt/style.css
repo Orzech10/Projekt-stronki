@@ -1476,5 +1476,3 @@ nav ul li a:hover {
 .rating[data-rating="4.5"] .stars::after { width: 90%; }
 .rating[data-rating="5"] .stars::after { width: 100%; }
 
-/* Poprawka dla przecinków zamiast kropek */
-.rating[data-rating="4,5"] .stars::after { width: 90%; }
