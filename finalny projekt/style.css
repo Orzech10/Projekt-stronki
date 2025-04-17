@@ -440,19 +440,20 @@ nav ul li a:hover {
 
 .offers-list {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 40px; /* Odstępy między ofertami */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
 }
 
 .offer {
-    flex: 1;
-    max-width: 320px;
     background: #1a1a1a;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 0px 15px rgba(255, 102, 0, 0.5);
     transition: transform 0.3s;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .offer:hover {
@@ -461,19 +462,24 @@ nav ul li a:hover {
 
 .offer img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .offer h3 {
-    font-size: 1.7em;
-    margin-bottom: 10px;
+    font-size: 1.5em;
+    margin-bottom: 15px;
     color: #ff6600;
+    min-height: 3em;
 }
 
 .offer p {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #ccc;
+    flex-grow: 1;
+    margin-bottom: 20px;
 }
 
 /* Cena w ofercie */
@@ -496,12 +502,14 @@ nav ul li a:hover {
     border-radius: 30px;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0px 4px 10px rgba(255, 102, 0, 0.5);
+    margin-top: auto;
 }
 
 .btn-offer:hover {
     background-color: #e55e00;
     transform: translateY(-3px);
 }
+
 @media (max-width: 1200px) {
     .offers-list {
         grid-template-columns: repeat(3, 1fr);
