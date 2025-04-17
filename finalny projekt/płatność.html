@@ -378,20 +378,20 @@
         <div class="payment-methods">
             <h2>Wybierz metodę płatności</h2>
             <button class="button" onclick="showPaymentDetails('blik')">
-                <img src="blik.png" alt="BLIK" class="payment-logo"> BLIK
+                <img src="foto/blik.png" alt="BLIK" class="payment-logo"> BLIK
             </button>
             <button class="button" onclick="showPaymentDetails('card')">
-                <img src="krta.png" alt="Karta płatnicza" class="payment-logo"> Karta płatnicza
+                <img src="foto/krta.png" alt="Karta płatnicza" class="payment-logo"> Karta płatnicza
             </button>
             <button class="button" onclick="showPaymentDetails('transfer')">
-                <img src="dus.png" alt="Przelew bankowy" class="payment-logo"> Przelew bankowy
+                <img src="foto/dus.png" alt="Przelew bankowy" class="payment-logo"> Przelew bankowy
             </button>
         </div>
 
         <!-- Sekcja BLIK -->
         <div class="payment-details" id="blik-details">
             <div class="blik-code-container">
-                <img src="blik.png" alt="BLIK" class="blik-logo">
+                <img src="foto/blik.png" alt="BLIK" class="blik-logo">
                 <p class="blik-instruction">Wprowadź 6-cyfrowy kod BLIK z aplikacji bankowej</p>
                 <div class="blik-code">
                     <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNext(this, 1)">
@@ -427,9 +427,9 @@
             </div>
             
             <div class="card-icons">
-                <img src="visa.png" alt="Visa">
-                <img src="mastercard.png" alt="Mastercard">
-                <img src="maestro.png" alt="Maestro">
+                <img src="foto/visa.png" alt="Visa">
+                <img src="foto/mastercard.png" alt="Mastercard">
+                <img src="foto/maestro.png" alt="Maestro">
             </div>
             
             <button class="button" id="card-button" onclick="processPayment()">
