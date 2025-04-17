@@ -1437,40 +1437,35 @@ nav ul li a:hover {
 }
 
 .stars {
-    display: inline-block;
     position: relative;
-    font-size: 1.2em;
-    color: #ccc;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
 }
 
 .stars::before {
     content: "★★★★★";
+    color: #ddd;
     display: block;
 }
 
 .stars::after {
     content: "★★★★★";
     position: absolute;
-    left: 0;
     top: 0;
-    width: attr(data-rating);
-    color: #ff6600;
+    left: 0;
+    color: #FFA41C;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .rating-value {
-    font-size: 0.9em;
-    color: #ccc;
+    font-size: 14px;
+    color: #555;
     font-weight: 600;
 }
 
-/* Dokładne pozycjonowanie wypełnionych gwiazdek */
-.stars::after {
-    width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
+/* Dynamiczne ustawianie szerokości */
 .rating[data-rating="1"] .stars::after { width: 20%; }
 .rating[data-rating="1.5"] .stars::after { width: 30%; }
 .rating[data-rating="2"] .stars::after { width: 40%; }
@@ -1481,3 +1476,5 @@ nav ul li a:hover {
 .rating[data-rating="4.5"] .stars::after { width: 90%; }
 .rating[data-rating="5"] .stars::after { width: 100%; }
 
+/* Poprawka dla przecinków zamiast kropek */
+.rating[data-rating="4,5"] .stars::after { width: 90%; }
